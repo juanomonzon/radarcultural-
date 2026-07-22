@@ -1,0 +1,4 @@
+project_id = "dsnjhngsubfansatonhr"
+
+[functions.notify-photo-upload]
+verify_jwt = false
