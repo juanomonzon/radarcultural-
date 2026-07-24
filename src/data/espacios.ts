@@ -100,7 +100,7 @@ export const espacios: Espacio[] = [
   { n: "El Querandí", c: [-34.6116, -58.3746], cat: "CAFE" },
   { n: "Bar Iberia", c: [-34.6092, -58.3834], cat: "CAFE" },
   { n: "El Estribo", c: [-34.6077, -58.4039], cat: "CAFE" },
-  { n: "La Embajada", c: [-34.6079, -58.3754], cat: "CAFE" },
+  { n: "La Embajada", c: [-34.6092, -58.3843], cat: "CAFE" },
   { n: "Bar de la Esquina", c: [-34.6145, -58.3778], cat: "CAFE" },
   { n: "Café de García", c: [-34.6062, -58.5108], cat: "CAFE" },
   { n: "El Viejo Buzón", c: [-34.6158, -58.4490], cat: "CAFE" },
