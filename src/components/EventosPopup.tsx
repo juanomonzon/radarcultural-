@@ -9,6 +9,9 @@ interface Evento {
   hora: string | null;
   instagram_url: string | null;
   imagen_url: string | null;
+  precio: string | null;
+  fecha_cierre: string | null;
+  entrada_url: string | null;
 }
 
 interface EventosPopupProps {
@@ -25,7 +28,7 @@ const EventosPopup = ({ lugar, color, onClose }: EventosPopupProps) => {
     const fetchEventos = async () => {
       const { data } = await supabase
         .from("eventos")
-        .select("id, titulo, descripcion, fecha_evento, hora, instagram_url, imagen_url")
+        .select("id, titulo, descripcion, fecha_evento, hora, instagram_url, imagen_url, precio, fecha_cierre, entrada_url")
         .eq("lugar", lugar)
         .eq("estado", "aprobado")
         .order("fecha_evento", { ascending: true });
@@ -75,21 +78,50 @@ const EventosPopup = ({ lugar, color, onClose }: EventosPopupProps) => {
                     {evt.descripcion && (
                       <p className="text-xs text-muted-foreground mt-1 line-clamp-3">{evt.descripcion}</p>
                     )}
-                    <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-3 mt-2 text-xs text-muted-foreground flex-wrap">
                       {evt.fecha_evento && <span>📅 {evt.fecha_evento}</span>}
                       {evt.hora && <span>🕐 {evt.hora}</span>}
                     </div>
-                    {evt.instagram_url && (
-                      <a
-                        href={evt.instagram_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 mt-2 text-xs font-semibold rounded-md px-3 py-1.5 transition-colors"
-                        style={{ background: `${color}20`, color }}
-                      >
-                        <i className="fab fa-instagram" /> Ver en Instagram
-                      </a>
-                    )}
+
+                    {/* Información de cierre y precio */}
+                    <div className="mt-3 pt-3 border-t border-border space-y-2">
+                      {evt.fecha_cierre && (
+                        <p className="text-xs text-muted-foreground">
+                          <span className="font-semibold">Cierra:</span> {evt.fecha_cierre}
+                        </p>
+                      )}
+                      {evt.precio && (
+                        <p className="text-xs font-semibold" style={{ color }}>
+                          💰 {evt.precio}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Botones de acción */}
+                    <div className="flex flex-col gap-2 mt-3">
+                      {evt.entrada_url && (
+                        <a
+                          href={evt.entrada_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-1.5 text-xs font-bold rounded-md px-3 py-2 transition-colors"
+                          style={{ background: "#9B59B6", color: "white" }}
+                        >
+                          🎟️ Comprar entradas
+                        </a>
+                      )}
+                      {evt.instagram_url && (
+                        <a
+                          href={evt.instagram_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold rounded-md px-3 py-1.5 transition-colors"
+                          style={{ background: `${color}20`, color }}
+                        >
+                          <i className="fab fa-instagram" /> Ver en Instagram
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}

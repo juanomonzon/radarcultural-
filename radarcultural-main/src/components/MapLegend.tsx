@@ -45,7 +45,7 @@ const MapLegend = ({ activeFilter, onFilterChange }: MapLegendProps) => {
       <div className="text-center">
         <p className="text-[10px] text-muted-foreground mb-2">Creado por:</p>
         <a
-          href="https://instagram.com/radarcultural_"
+          href="https://instagram.com/juano.monzon"
           target="_blank"
           rel="noopener noreferrer"
           className="block text-[11px] font-bold text-primary-foreground py-1.5 rounded-md"
@@ -54,7 +54,7 @@ const MapLegend = ({ activeFilter, onFilterChange }: MapLegendProps) => {
               "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
           }}
         >
-          <i className="fab fa-instagram mr-1" /> radarcultural_
+          <i className="fab fa-instagram mr-1" /> Juano Monzon
         </a>
       </div>
     </div>
